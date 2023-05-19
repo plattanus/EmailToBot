@@ -20,7 +20,7 @@ msg['Subject'] = Header(subject, 'utf-8')
 # 发送邮件
 try:
     server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()
+    # server.starttls()
     server.login(sender, password)
     server.sendmail(sender, [recipient], msg.as_string())
     print('Email sent successfully!')
