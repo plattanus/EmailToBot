@@ -1,0 +1,5 @@
+aiosmtpd
+pyTelegramBotAPI 
+dnspython 
+python-telegram-bot 
+argon2-cffi
