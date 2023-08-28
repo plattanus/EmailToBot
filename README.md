@@ -1,29 +1,32 @@
 # EmailToBot
 
-##### docker 启动
 
-替换*号内容，依次为，机器人token，确认密钥，邮箱用户名，用户密码
 
-例如：
+This project automatically forwards mail that passes through the mail port of the local port to the telegram bot.
+A new telegram robot will not be described in detail here.
+Note: test.py is used to simulate sending mail for testing.
 
+On-premises Deployment
+
+```bash
+$ python emailtobot.py -t <your_token> -k <your_key> -u <your_username> -p <your_password> -P <your_port>
 ```
+
+Docker Deployment
+
+```dockerfile
 FROM python:3
-
 WORKDIR /usr/src/app
-
 COPY emailtobot.py ./
 COPY requirements.txt ./
-
 RUN pip install -r requirements.txt
-
-CMD ["python", "./emailtobot.py", "-t" , "*:*", "-k", "*", "-u", "*@*.com", "-p", "*"]
+CMD ["python", "./emailtobot.py", "-t" , <your_token>, "-k", <your_key>, "-u", <your_username>, "-p", <your_password>, "-P", <your_port>]
 ```
 
-##### example
+Start Container
 
-```
-docker build -t etb .
-docker run -p 18025:18025 -d etb
+```bash
+$ docker build -t etb .
+$ docker run -p <bind_port>:<your_port> -d etb
 ```
 
-该项目用于部署telegram bot机器人接收本地邮件内容，新建一个telegram机器人这里不详细描述。并且本项目支持docker部署。

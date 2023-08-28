@@ -80,11 +80,11 @@ class RelayHandler:
 
 
 # noinspection PyShadowingNames
-def amain():
+def amain(my_port):
     controller = Controller(
         RelayHandler(),
         hostname="0.0.0.0",
-        port=18025,
+        port=my_port,
         authenticator=Authenticator(),
         auth_require_tls=False,
     )
@@ -99,6 +99,7 @@ def createuser(my_username, my_password):
     USER_AND_PASSWORD[my_username] = PasswordHasher().hash(my_password)
 
 
+# Forward mail to telegram bot
 class EmailToBot:
     async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(
@@ -165,15 +166,17 @@ if __name__ == "__main__":
     parser.add_argument("-k", "--key", help="a key to manage")
     parser.add_argument("-u", "--username", help="a user to login")
     parser.add_argument("-p", "--password", help="a password for user")
+    parser.add_argument("-P", "--port", help="email bind port")
     args = parser.parse_args()
     my_token = args.token
     my_key = args.key
     my_username = args.username
     my_password = args.password
+    my_port = args.port
 
     createuser(my_username, my_password)
     print("start server")
-    amain()
+    amain(my_port)
 
     application = ApplicationBuilder().token(my_token).build()
 
