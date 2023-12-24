@@ -4,6 +4,7 @@ from unittest.mock import MagicMock, patch
 from ..etb.emailtobot import EmailToBot
 
 
+
 class EmailToBotTest(unittest.TestCase):
     def setUp(self):
         self.context_mock = MagicMock()

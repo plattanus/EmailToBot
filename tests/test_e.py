@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 from ..etb.emailtobot import Authenticator, get_mx, RelayHandler
 
 
+ 
 class AuthenticatorTest(unittest.TestCase):
     def setUp(self):
         self.authenticator = Authenticator()
