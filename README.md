@@ -1,15 +1,13 @@
 # EmailToBot
 
-
-
 This project automatically forwards mail that passes through the mail port of the local port to the telegram bot.
 A new telegram robot will not be described in detail here.
 Note: test.py is used to simulate sending mail for testing.
 
 On-premises Deployment
 
-```bash
-$ python emailtobot.py -t <your_token> -k <your_key> -u <your_username> -p <your_password> -P <your_port>
+```shell
+$ python emailtobot.py -t
 ```
 
 Docker Deployment
@@ -29,4 +27,3 @@ Start Container
 $ docker build -t etb .
 $ docker run -p <bind_port>:<your_port> -d etb
 ```
-
