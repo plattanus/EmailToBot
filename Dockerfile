@@ -1,8 +1,9 @@
-FROM python:3
+FROM python:3.10
 
 WORKDIR /usr/src/app
 
-COPY emailtobot.py ./
+
+COPY ./etb/emailtobot.py ./
 COPY requirements.txt ./
 
 RUN pip install -r requirements.txt

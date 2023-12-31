@@ -13,8 +13,11 @@ from telegram import Update
 from telegram.ext import (ApplicationBuilder, CommandHandler, ContextTypes,
                           MessageHandler, filters)
 
-my_token = "*:*"
-my_key = "*"
+import os
+
+my_token = os.environ["ETBLTT_BOT_TOKEN"]
+my_key = os.environ["BIND_KEY"]
+
 all_chat_id = set()
 USER_AND_PASSWORD: Dict[str, str] = {}
 
@@ -161,23 +164,30 @@ class EmailToBot:
         )
 
 
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="description of your program")
-    parser.add_argument("-t", "--token", help="your bot token")
-    parser.add_argument("-k", "--key", help="a key to manage")
-    parser.add_argument("-u", "--username", help="a user to login")
-    parser.add_argument("-p", "--password", help="a password for user")
-    parser.add_argument("-P", "--port", help="email bind port")
-    args = parser.parse_args()
-    my_token = args.token
-    my_key = args.key
-    my_username = args.username
-    my_password = args.password
-    my_port = args.port
+    # input_run
+    # parser = argparse.ArgumentParser(description="description of your program")
+    # parser.add_argument("-t", "--token", help="your bot token")
+    # parser.add_argument("-k", "--key", help="a key to manage")
+    # parser.add_argument("-u", "--username", help="a user to login")
+    # parser.add_argument("-p", "--password", help="a password for user")
+    # parser.add_argument("-P", "--port", help="email bind port")
+    # args = parser.parse_args()
+    # my_token = args.token
+    # my_key = args.key
+    # my_username = args.username
+    # my_password = args.password
+    # my_port = args.port
+
+    # github_run
+    my_username = os.environ["BIND_USER"]
+    my_password = os.environ["USER_PASSWORD"]
+    my_port = os.environ["BIND_PORT"]
 
     createuser(my_username, my_password)
     print("start server")
-    amain(my_port)
+    amain(int(my_port))
 
     application = ApplicationBuilder().token(my_token).build()
 

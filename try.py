@@ -32,6 +32,7 @@ except Exception as e:
 finally:
     server.quit()
 
+# tls not support
 '''
 swaks --to recipient@example.com --from sender@example.com --server 127.0.0.1 --port 18025 --auth-user sender@example.com --auth-password password --tls --data "Subject: Test Email\r\n\r\nThis is a test email."
 '''
